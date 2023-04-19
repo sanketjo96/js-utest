@@ -7,6 +7,15 @@
 // 'describe' method provides this ability. Its globally available. 
 describe('Calculator.js', function () {
 
+  let calculator;
+  beforeEach(function () {
+      calculator = new Calculator();
+  });
+
+  // afterEach(function() {
+
+  // });
+
   // Spec is expectation or group of expectations from code
   // We can use 'it' method to define spec.
   it('should add number to the total', function () {
@@ -27,4 +36,22 @@ describe('Calculator.js', function () {
     // An expectation can be checked with 'expect'
     expect(calculator.total).toBe(25);
   });
+
+
+  // it('should add number to the total', function () {
+  //   calculator.add(5);
+  //   expect(calculator.total).toBe(5);
+  // });
+
+  // it('should subtract number from the total', function () {
+  //   calculator.total = 30;
+  //   calculator.subtract(5);
+  //   expect(calculator.total).toBe(25);
+  // });
+
+  // How to assert error throwing
+  // it('should should throw divide by zero error', function () {
+  //   calculator.total = 30;
+  //   expect(() => calculator.divide(0)).toThrowError('number cannot be zero')
+  // });
 });

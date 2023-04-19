@@ -42,7 +42,32 @@ function updateResult(result) {
   }
 }
 
-const ele = document.getElementById('inputValue')
-if (ele) {
-  ele.addEventListener('change', calculate);
+function AddEvent(ele, method) {
+  if (ele) {
+    ele.addEventListener('change', method);
+  }
 }
+
+function GetVersion() {
+  return fetch(
+    'https://gist.githubusercontent.com/leelanarasimha/4b3dde448c828ec54f29fcc727c680df/raw/096bb0f055877c5f8e7243518be7be03772d2c4a/version.json'
+  ).then(function (result) {
+    return result.json();
+  })
+  .then(function (jsonData) {
+    return jsonData.version;
+  });
+}
+
+// Start execution
+GetVersion().then((version) => {
+  let versionElement = document.getElementById('version');
+  if (versionElement) {
+    versionElement.innerText = version;
+  }
+})
+
+const element = document.getElementById('inputValue')
+AddEvent(element, calculate)
+
+
